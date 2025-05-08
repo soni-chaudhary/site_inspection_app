@@ -25,10 +25,9 @@ void main() {
     'Updates inspection status',
     build: () => bloc,
     seed: () => InspectionState(items: [
-      InspectionItem(name: 'Item 1', image: ''),
+      InspectionItem(name: 'Item 1', image: 'fire_extinguishers.jpg'),
     ]),
-    act: (bloc) =>
-        bloc.add(UpdateInspectionStatus(0, InspectionStatus.passed)),
+    act: (bloc) => bloc.add(UpdateInspectionStatus(0, InspectionStatus.passed)),
     expect: () => [
       isA<InspectionState>().having(
         (s) => s.items[0].status,
@@ -42,7 +41,10 @@ void main() {
     'Resets all inspection statuses',
     build: () => bloc,
     seed: () => InspectionState(items: [
-      InspectionItem(name: 'Item 1', status: InspectionStatus.failed, image: ''),
+      InspectionItem(
+          name: 'Item 1',
+          status: InspectionStatus.failed,
+          image: 'fire_extinguishers.jpg'),
     ]),
     act: (bloc) => bloc.add(ResetInspectionStatuses()),
     expect: () => [
